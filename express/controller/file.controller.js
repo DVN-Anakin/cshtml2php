@@ -13,7 +13,7 @@ let phazorInit = async (req, res) => {
 
     await fs.readFile(path.join(__dirname, '../../php/' + fileNewName), function(err, data) {
         if(err) {
-            // console.log(err)
+            console.log(err)
             throw error;
         }
 
@@ -22,7 +22,7 @@ let phazorInit = async (req, res) => {
         exec('rm -r uploads/*');
         exec('rm -r php/*');
 
-        // console.log('phpCompiled', phpCompiled);
+        console.log('phpCompiled', phpCompiled);
         res.status(200).send({
             "message": "Uploaded the file successfully: " + req.file.originalname,
             "filename": fileNewName,
@@ -32,7 +32,7 @@ let phazorInit = async (req, res) => {
 }
 
 const upload = async (req, res) => {
-    // console.log(req);
+    console.log(req.file.originalname, req);
     try {
         await uploadFile(req, res);
         if (req.file == undefined) {
