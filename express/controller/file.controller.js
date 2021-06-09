@@ -33,18 +33,18 @@ let phazorInit = async (req, res) => {
 
 const upload = async (req, res) => {
     console.log(req.file.originalname, req);
-    try {
+    // try {
         await uploadFile(req, res);
         if (req.file == undefined) {
             return res.status(400).send({ message: "Please upload a file!" });
         }
 
         await phazorInit(req, res);
-    } catch (err) {
-        res.status(500).send({
-            message: `Could not upload the file: ${req.file.originalname}. ${err}`,
-        });
-    }
+    // } catch (err) {
+    //    res.status(500).send({
+    //        message: `Could not upload the file: ${req.file.originalname}. ${err}`,
+    //    });
+    // }
 };
 
 const getListFiles = (req, res) => {
